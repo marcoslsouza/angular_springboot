@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.marcoslsouza.vendas.model.entity.Cliente;
+
 @SpringBootApplication
 @RestController
 public class VendasApplication {
