@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +27,7 @@ public class Cliente {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@Column(nullable = false, length = 150)
 	private String nome;
@@ -34,6 +36,7 @@ public class Cliente {
 	private String cpf;
 	
 	@Column(name = "data_cadastro")
+	@JsonFormat(pattern = "dd/MM/yyyy") // Retorna a data para o JSON com esse formato
 	private LocalDate dataCadastro;
 	
 	@PrePersist
