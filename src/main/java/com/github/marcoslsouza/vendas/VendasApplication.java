@@ -24,7 +24,7 @@ public class VendasApplication {
 	public CommandLineRunner run(@Autowired ClienteRepository repository) {
 		return args -> {
 			// Na classe cliente temos a anotation @builder
-			Cliente cliente = Cliente.builder().cpf("0000000000").nome("Fulano").build();
+			Cliente cliente = Cliente.builder().cpf("03582352005").nome("Fulano").build();
 			repository.save(cliente);
 		};
 	}

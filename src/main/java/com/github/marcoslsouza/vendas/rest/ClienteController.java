@@ -1,5 +1,7 @@
 package com.github.marcoslsouza.vendas.rest;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +31,7 @@ public class ClienteController {
 	
 	@PostMapping("/salvar")
 	@ResponseStatus(HttpStatus.CREATED) // Mapea o objeto de retorno para o corpo da resposta. // HttpStatus.CREATED retorna created ou inves de ok (200)
-	public Cliente salvar(@RequestBody Cliente cliente) { // @RequestBody informa que os valores de cliente vem no corpo da requisição json.
+	public Cliente salvar(@RequestBody @Valid Cliente cliente) { // @RequestBody informa que os valores de cliente vem no corpo da requisição json.
 		return repository.save(cliente);
 	}
 	
@@ -51,7 +53,7 @@ public class ClienteController {
 	
 	@PutMapping("{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void atualizar(@PathVariable Long id, @RequestBody Cliente clienteAtualizado) {
+	public void atualizar(@PathVariable Long id, @RequestBody @Valid Cliente clienteAtualizado) {
 		repository.findById(id).map(cliente -> {
 			clienteAtualizado.setId(cliente.getId());
 			clienteAtualizado.setDataCadastro(cliente.getDataCadastro());
