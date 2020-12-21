@@ -1,9 +1,12 @@
 package com.github.marcoslsouza.vendas.rest;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +23,7 @@ import com.github.marcoslsouza.vendas.model.repository.ClienteRepository;
 
 @RestController
 @RequestMapping("/cliente")
+@CrossOrigin("http://localhost:4200")
 public class ClienteController {
 
 	private final ClienteRepository repository;
@@ -59,5 +63,10 @@ public class ClienteController {
 			clienteAtualizado.setDataCadastro(cliente.getDataCadastro());
 			return repository.save(clienteAtualizado);
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+	}
+	
+	@GetMapping
+	public List<Cliente> obterTodos() {
+		return repository.findAll();
 	}
 }
