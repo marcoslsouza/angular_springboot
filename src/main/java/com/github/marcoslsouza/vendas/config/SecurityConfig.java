@@ -10,9 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.github.marcoslsouza.vendas.service.UsuarioService;
@@ -57,10 +55,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().cors().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 	
-	// Para criptografar e decriptografar a senha do usuario.
+	// Para criptografar e decriptografar as senhas
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		// A instrucao abaixo nao criptografa a senha, e apenas teste.
-		return NoOpPasswordEncoder.getInstance();
+		//return NoOpPasswordEncoder.getInstance();
+		return new BCryptPasswordEncoder();
 	}
 }
