@@ -11,4 +11,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	// Retorna um optional de usuario. Usa a propriedade username de Usuario.
 	// Porque Optional porque se encontrar um objeto ele retorna, se não retorna vazio.
 	Optional<Usuario> findByUsername(String username);
+
+	// existsBy tambem esta dentro da especificacao dos Query methods 
+	// SELECT COUNT(*) > 0 FROM usuario WHERE username = :username
+	boolean existsByUsername(String username);
 }

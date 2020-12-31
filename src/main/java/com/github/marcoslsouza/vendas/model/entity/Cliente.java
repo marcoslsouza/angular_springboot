@@ -1,5 +1,6 @@
 package com.github.marcoslsouza.vendas.model.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -27,8 +28,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor // Construtor sem argumentos
 @AllArgsConstructor // Construtor com argumentos
 @Builder // Cria um builder "Cliente cliente = Cliente.builder().cpf("0000000000").nome();"
-public class Cliente {
+public class Cliente implements Serializable {
 	
+	private static final long serialVersionUID = -1960306413487274824L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

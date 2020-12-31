@@ -1,10 +1,13 @@
 package com.github.marcoslsouza.vendas.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +15,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Usuario {
+public class Usuario implements Serializable {
+
+	private static final long serialVersionUID = -5308614929452790981L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +25,10 @@ public class Usuario {
 	
 	// unique username unico na tabela de usuarios
 	@Column(unique = true, name = "login")
+	@NotEmpty(message = "{campo.login.obrigatorio}")
 	private String username;
 	
 	@Column(name = "senha")
+	@NotEmpty(message = "{campo.senha.obrigatorio}")
 	private String password;
 }

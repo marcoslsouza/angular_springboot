@@ -1,5 +1,6 @@
 package com.github.marcoslsouza.vendas.model.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -18,7 +19,9 @@ import lombok.Data;
 
 @Entity
 @Data
-public class ServicoPrestado {
+public class ServicoPrestado implements Serializable {
+
+	private static final long serialVersionUID = 2873022604935099916L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
