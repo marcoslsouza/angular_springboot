@@ -36,6 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// userDetailsService() carrega os dados do usuario no banco de dados.
 		// passwordEncoder compara a senha recebida com a senha do usuario no banco de dados.
 		// A classe UsuarioService está implementando UserDetailsService.
+		// Obs: usuarioService e um UserDetailsService.
 		auth.userDetailsService(usuarioService).passwordEncoder(passwordEncoder());
 	}
 	
